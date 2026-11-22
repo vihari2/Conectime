@@ -1,0 +1,30 @@
+
+# Maven
+target/
+
+# Java
+*.class
+*.log
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IntelliJ
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Arquivos sensíveis
+.env
+.env.*
+!.env.example
+application-local.properties
+
+# Linux
+*~
+.directory
