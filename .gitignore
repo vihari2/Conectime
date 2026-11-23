@@ -1,6 +1,7 @@
 
 # Maven
 target/
+!.mvn/wrapper/maven-wrapper.jar
 
 # Java
 *.class
@@ -24,7 +25,14 @@ target/
 .env.*
 !.env.example
 application-local.properties
+src/main/resources/application.properties
+
 
 # Linux
 *~
 .directory
+
+## Node / Front-end (dependências baixadas e build)
+node_modules/
+dist/
+build/
