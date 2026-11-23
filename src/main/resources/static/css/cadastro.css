@@ -1,0 +1,163 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f3ff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cadastro-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.cadastro-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.brand {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.brand h1 {
+    color: #6d28d9;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.brand p {
+    color: #88869a;
+    font-size: 14px;
+}
+
+.cadastro-heading {
+    margin-bottom: 25px;
+}
+
+.cadastro-heading h2 {
+    color: #25243a;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.cadastro-heading p {
+    color: #77758a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dedde8;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.10);
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.password-container input {
+    flex: 1;
+    min-width: 0;
+}
+
+.password-container button {
+    border: none;
+    background: none;
+    color: #6d28d9;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.cadastro-button {
+    width: 100%;
+    padding: 14px;
+    background: #6d28d9;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.cadastro-button:hover {
+    background: #5b21b6;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 25px;
+    color: #77758a;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #6d28d9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+@media (max-width: 480px) {
+    .cadastro-card {
+        padding: 28px 22px;
+    }
+
+    .cadastro-heading h2 {
+        font-size: 21px;
+    }
+}

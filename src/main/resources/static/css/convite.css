@@ -1,0 +1,276 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7fb;
+    color: #25243a;
+}
+
+.topbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #ecebf2;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: #6d28d9;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.topbar span {
+    color: #858397;
+    font-size: 13px;
+}
+
+.container {
+    width: 90%;
+    max-width: 760px;
+    margin: 45px auto;
+}
+
+.heading {
+    margin-bottom: 30px;
+}
+
+.eyebrow,
+.section-label {
+    color: #7954db;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.heading h1 {
+    font-size: 29px;
+    margin: 12px 0;
+}
+
+.heading p {
+    color: #858397;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #ecebf2;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.meeting-card h2 {
+    font-size: 21px;
+    margin: 14px 0 10px;
+}
+
+.description {
+    color: #77758a;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.meeting-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.meeting-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meeting-info span {
+    color: #858397;
+    font-size: 12px;
+}
+
+.meeting-info strong {
+    font-size: 14px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.step {
+    width: 38px;
+    height: 38px;
+    background: #f0eaff;
+    color: #7047d6;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.section-heading h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.section-heading p {
+    color: #858397;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.availability-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.time-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    border: 1px solid #e8e5ef;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.time-option:hover {
+    border-color: #9a7ce5;
+    background: #fbfaff;
+}
+
+.time-option input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.checkbox-custom {
+    width: 21px;
+    height: 21px;
+    border: 2px solid #c9c5d6;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.time-option input:checked + .checkbox-custom {
+    background: #7047d6;
+    border-color: #7047d6;
+    position: relative;
+}
+
+.time-option input:checked + .checkbox-custom::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    left: 3px;
+    top: 0;
+}
+
+.time-option input:focus-visible + .checkbox-custom {
+    outline: 3px solid #c9b8f5;
+    outline-offset: 3px;
+}
+
+.time-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.time-info strong {
+    font-size: 14px;
+}
+
+.time-info span {
+    color: #858397;
+    font-size: 12px;
+}
+
+.helper-text {
+    color: #858397;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 14px;
+    background: #7047d6;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #5935b8;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.empty-state h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #858397;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #9996a8;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+        margin-top: 30px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .heading h1 {
+        font-size: 25px;
+    }
+
+    .topbar {
+        padding: 0 5%;
+    }
+}

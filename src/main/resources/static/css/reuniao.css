@@ -1,0 +1,282 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7fb;
+    color: #25243a;
+}
+
+.topbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #ededf3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+.brand {
+    font-size: 23px;
+    font-weight: 700;
+    color: #6d45d8;
+    text-decoration: none;
+}
+
+.user-label {
+    color: #77758a;
+    font-size: 14px;
+}
+
+.page-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 45px auto;
+}
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: #7954db;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.page-heading h1 {
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.page-heading p {
+    color: #77758a;
+    line-height: 1.5;
+}
+
+.form-card {
+    background: #ffffff;
+    border: 1px solid #ecebf2;
+    border-radius: 13px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.step {
+    width: 37px;
+    height: 37px;
+    background: #f0eaff;
+    color: #7047d6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.section-heading h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: #858397;
+    font-size: 13px;
+}
+
+.field {
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 0;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.field input,
+.field textarea,
+.field select,
+.invite-row input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dedde8;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #333147;
+    background: #ffffff;
+    outline: none;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+.invite-row input:focus {
+    border-color: #8159df;
+    box-shadow: 0 0 0 3px rgba(129, 89, 223, 0.10);
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.invite-row,
+.time-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.invite-row input {
+    flex: 1;
+    min-width: 0;
+}
+
+.time-row {
+    align-items: flex-end;
+}
+
+.time-row .field {
+    margin-bottom: 0;
+}
+
+.remove-row {
+    width: 38px;
+    height: 42px;
+    border: 1px solid #e7dfe8;
+    background: #fff;
+    color: #c05262;
+    border-radius: 8px;
+    font-size: 21px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.remove-row:hover {
+    background: #fff0f1;
+}
+
+.add-button {
+    border: none;
+    background: none;
+    color: #7047d6;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.add-button:hover {
+    color: #4d2ca8;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0 35px;
+}
+
+.cancel-button,
+.submit-button {
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancel-button {
+    color: #666477;
+    border: 1px solid #dedde8;
+    background: #ffffff;
+}
+
+.submit-button {
+    color: #ffffff;
+    background: #7047d6;
+    border: none;
+}
+
+.submit-button:hover {
+    background: #5935b8;
+}
+
+.message {
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.error {
+    background: #fee9e9;
+    color: #a52b36;
+}
+
+@media (max-width: 600px) {
+
+    .topbar {
+        padding: 0 5%;
+    }
+
+    .page-container {
+        width: 92%;
+        margin-top: 30px;
+    }
+
+    .page-heading h1 {
+        font-size: 25px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .time-row {
+        flex-wrap: wrap;
+    }
+
+    .time-row .field {
+        flex-basis: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .cancel-button,
+    .submit-button {
+        text-align: center;
+    }
+}

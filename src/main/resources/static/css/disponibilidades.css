@@ -1,0 +1,293 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7fb;
+    color: #25243a;
+}
+
+.topbar {
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #ecebf2;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    color: #6d28d9;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-link,
+.back-button {
+    color: #7047d6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.container {
+    width: 90%;
+    max-width: 950px;
+    margin: 40px auto;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: #7954db;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.page-heading h1 {
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.page-heading p {
+    color: #858397;
+    font-size: 14px;
+}
+
+.summary-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #fff;
+    border: 1px solid #ecebf2;
+    border-radius: 12px;
+    padding: 23px;
+    margin-bottom: 30px;
+}
+
+.summary-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 5px 20px;
+    border-right: 1px solid #ecebf2;
+}
+
+.summary-card div:last-child {
+    border-right: none;
+}
+
+.summary-label {
+    color: #858397;
+    font-size: 13px;
+}
+
+.summary-card strong {
+    font-size: 25px;
+    color: #7047d6;
+}
+
+.results-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #858397;
+    font-size: 13px;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.schedule-card {
+    background: #fff;
+    border: 1px solid #ecebf2;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #efedf4;
+}
+
+.schedule-label {
+    color: #7954db;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.schedule-header h3 {
+    font-size: 17px;
+    margin: 10px 0 6px;
+}
+
+.schedule-header p {
+    color: #858397;
+    font-size: 13px;
+}
+
+.availability-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f2edff;
+    border-radius: 10px;
+    width: 95px;
+    height: 85px;
+    flex-shrink: 0;
+}
+
+.availability-count strong {
+    color: #7047d6;
+    font-size: 25px;
+}
+
+.availability-count span {
+    color: #77758a;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.participants {
+    padding-top: 20px;
+}
+
+.participants h4 {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.participant-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.participant-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.participant-icon {
+    background: #e4f7eb;
+    color: #25834b;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.participant-list li div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.participant-list strong {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.participant-list li div span {
+    color: #858397;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.no-answers {
+    color: #858397;
+    font-size: 13px;
+    padding: 10px 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fff;
+    border: 1px solid #ecebf2;
+    border-radius: 12px;
+}
+
+.empty-icon {
+    font-size: 38px;
+}
+
+.empty-state h3 {
+    margin: 15px 0 10px;
+}
+
+.empty-state p {
+    color: #858397;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 430px;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .summary-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .summary-card div {
+        border-right: none;
+        border-bottom: 1px solid #ecebf2;
+        padding: 10px 5px;
+    }
+
+    .summary-card div:last-child {
+        border-bottom: none;
+    }
+
+    .schedule-card {
+        padding: 18px;
+    }
+
+    .schedule-header {
+        align-items: flex-start;
+    }
+}
