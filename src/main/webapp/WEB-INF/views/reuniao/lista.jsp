@@ -90,11 +90,6 @@
 
                     <h3>Nenhuma reunião por aqui</h3>
 
-                    <p>
-                        Você ainda não criou nenhum agendamento.
-                        Que tal organizar sua primeira reunião?
-                    </p>
-
                     <a href="${pageContext.request.contextPath}/reunioes/nova"
                        class="create-button">
                         Criar minha primeira reunião
