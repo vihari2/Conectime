@@ -94,4 +94,29 @@ public class DisponibilidadeController {
             return "redirect:/reunioes";
         }
     }
+
+    // Recebe a opção escolhida pelo organizador
+    @PostMapping("/confirmar")
+    public String confirmar(
+        @PathVariable Long idReuniao,
+        @RequestParam Long idHorario,
+        HttpSession session,
+        RedirectAttributes redirectAttributes
+    ) {
+        Long idUsuario = (Long) session.getAttribute("usuarioId");
+
+        if (idUsuario == null) {
+            return "redirect:/usuarios/login";
+        }
+
+        try {
+            reuniaoService.confirmarHorario(idReuniao, idUsuario, idHorario);
+
+            redirectAttributes.addFlashAttribute("sucesso", "Horário confirmado com sucesso!");
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("erro", e.getMessage());
+        }
+
+        return "redirect:/reunioes/" + idReuniao + "/disponibilidades";
+    }
 }

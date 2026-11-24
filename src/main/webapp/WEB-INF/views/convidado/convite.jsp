@@ -101,6 +101,18 @@
             </div>
         </div>
 
+        <c:if test="${not empty sucesso}">
+            <div class="response-message success" role="status">
+                <c:out value="${sucesso}" />
+            </div>
+        </c:if>
+
+        <c:if test="${not empty erro}">
+            <div class="response-message error" role="alert">
+                <c:out value="${erro}" />
+            </div>
+        </c:if>
+
         <c:choose>
 
             <c:when test="${empty horarios}">

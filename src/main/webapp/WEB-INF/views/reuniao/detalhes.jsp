@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -110,11 +111,23 @@
                 <div class="selected-time">
                     <p>
                         Início:
-                        <c:out value="${reuniao.horarioEscolhido.dataHoraInicio}"/>
+                        <fmt:parseDate
+                            value="${reuniao.horarioEscolhido.dataHoraInicio}"
+                            pattern="yyyy-MM-dd'T'HH:mm"
+                            var="inicioConfirmadoFormatado" />
+                        <fmt:formatDate
+                            value="${inicioConfirmadoFormatado}"
+                            pattern="dd/MM/yyyy 'às' HH:mm" />
                     </p>
                     <p>
                         Término:
-                        <c:out value="${reuniao.horarioEscolhido.dataHoraFim}"/>
+                        <fmt:parseDate
+                            value="${reuniao.horarioEscolhido.dataHoraFim}"
+                            pattern="yyyy-MM-dd'T'HH:mm"
+                            var="fimConfirmadoFormatado" />
+                        <fmt:formatDate
+                            value="${fimConfirmadoFormatado}"
+                            pattern="dd/MM/yyyy 'às' HH:mm" />
                     </p>
                 </div>
             </c:when>
@@ -154,12 +167,24 @@
                         <div class="list-item">
                             <div>
                                 <strong>
-                                    <c:out value="${horario.dataHoraInicio}"/>
+                                    <fmt:parseDate
+                                        value="${horario.dataHoraInicio}"
+                                        pattern="yyyy-MM-dd'T'HH:mm"
+                                        var="inicioHorarioFormatado" />
+                                    <fmt:formatDate
+                                        value="${inicioHorarioFormatado}"
+                                        pattern="dd/MM/yyyy 'às' HH:mm" />
                                 </strong>
 
                                 <p>
                                     Até
-                                    <c:out value="${horario.dataHoraFim}"/>
+                                    <fmt:parseDate
+                                        value="${horario.dataHoraFim}"
+                                        pattern="yyyy-MM-dd'T'HH:mm"
+                                        var="fimHorarioFormatado" />
+                                    <fmt:formatDate
+                                        value="${fimHorarioFormatado}"
+                                        pattern="dd/MM/yyyy 'às' HH:mm" />
                                 </p>
                             </div>
                         </div>

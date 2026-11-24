@@ -1,6 +1,7 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,194 +18,316 @@
 
 <body>
 
-<header class="topbar">
+    <!-- Cabeçalho -->
+    <header class="topbar">
 
-    <a href="${pageContext.request.contextPath}/reunioes"
-       class="brand">Conectime</a>
+        <a href="${pageContext.request.contextPath}/reunioes"
+           class="brand">
+            Conectime
+        </a>
 
-    <a href="${pageContext.request.contextPath}/reunioes"
-       class="back-link">Minhas reuniões</a>
+        <a href="${pageContext.request.contextPath}/reunioes"
+           class="back-link">
+            Minhas reuniões
+        </a>
 
-</header>
+    </header>
 
-<main class="container">
+    <main class="container">
 
-    <a href="${pageContext.request.contextPath}/reunioes/${reuniao.idReuniao}"
-       class="back-button">
-        ← Voltar aos detalhes
-    </a>
+        <!-- Botão de voltar -->
+        <a href="${pageContext.request.contextPath}/reunioes/${reuniao.idReuniao}"
+           class="back-button">
+            ← Voltar aos detalhes
+        </a>
 
-    <section class="page-heading">
+        <!-- Cabeçalho da página -->
+        <section class="page-heading">
 
-        <span class="eyebrow">RESPOSTAS DOS CONVIDADOS</span>
+            <span class="eyebrow">RESPOSTAS DOS CONVIDADOS</span>
 
-        <h1>Disponibilidades</h1>
+            <h1>Disponibilidades</h1>
 
-        <p>
-            Reunião:
-            <strong><c:out value="${reuniao.titulo}"/></strong>
-        </p>
+            <p>
+                Reunião:
+                <strong>
+                    <c:out value="${reuniao.titulo}"/>
+                </strong>
+            </p>
 
-    </section>
+        </section>
 
-    <!-- Resumo dos convidados -->
-    <section class="summary-card">
+        <!-- Mensagens de sucesso e erro -->
+        <c:if test="${not empty sucesso}">
+            <div class="page-message success">
+                <c:out value="${sucesso}"/>
+            </div>
+        </c:if>
 
-        <div>
-            <span class="summary-label">Total de convidados</span>
-            <strong>
-                <c:out value="${reuniao.convidados.size()}"/>
-            </strong>
-        </div>
+        <c:if test="${not empty erro}">
+            <div class="page-message error">
+                <c:out value="${erro}"/>
+            </div>
+        </c:if>
 
-        <div>
-            <span class="summary-label">Já responderam</span>
+        <!-- Exibe o horário confirmado -->
+        <c:if test="${reuniao.status == 'confirmada'}">
 
-            <strong>
-                <c:out value="${respondidos}"/>
-            </strong>
-        </div>
+            <div class="confirmation-message">
 
-        <div>
-            <span class="summary-label">Pendentes</span>
+                <strong>Reunião confirmada!</strong>
 
-            <strong>
-                <c:out value="${pendentes}"/>
-            </strong>
-        </div>
+                <p>
+                    Horário escolhido:
 
-    </section>
+                    <fmt:parseDate
+                        value="${reuniao.horarioEscolhido.dataHoraInicio}"
+                        pattern="yyyy-MM-dd'T'HH:mm"
+                        var="inicioFormatado" />
+                    <fmt:formatDate value="${inicioFormatado}" pattern="dd/MM/yyyy 'às' HH:mm" />
 
-    <!-- Resultado por horário -->
-    <section class="results-section">
+                    até
 
-        <div class="section-title">
-            <h2>Resultado por horário</h2>
-            <p>Veja quantos convidados podem participar de cada opção.</p>
-        </div>
+                    <fmt:parseDate
+                        value="${reuniao.horarioEscolhido.dataHoraFim}"
+                        pattern="yyyy-MM-dd'T'HH:mm"
+                        var="fimFormatado" />
+                    <fmt:formatDate value="${fimFormatado}" pattern="dd/MM/yyyy 'às' HH:mm" />
+                </p>
 
-        <c:choose>
+            </div>
 
-            <c:when test="${empty horarios}">
+        </c:if>
 
-                <div class="empty-state">
-                    <span class="empty-icon">📅</span>
+        <!-- Resumo dos convidados -->
+        <section class="summary-card">
 
-                    <h3>Nenhum horário cadastrado</h3>
+            <div>
+                <span class="summary-label">Total de convidados</span>
 
-                    <p>
-                        Cadastre opções de horários para começar a receber
-                        as disponibilidades dos convidados.
-                    </p>
-                </div>
+                <strong>
+                    <c:out value="${reuniao.convidados.size()}"/>
+                </strong>
+            </div>
 
-            </c:when>
+            <div>
+                <span class="summary-label">Já responderam</span>
 
-            <c:otherwise>
+                <strong>
+                    <c:out value="${respondidos}"/>
+                </strong>
+            </div>
 
-                <div class="schedule-list">
+            <div>
+                <span class="summary-label">Pendentes</span>
 
-                    <c:forEach items="${horarios}" var="horario">
+                <strong>
+                    <c:out value="${pendentes}"/>
+                </strong>
+            </div>
 
-                        <article class="schedule-card">
+        </section>
 
-                            <div class="schedule-header">
+        <!-- Resultado por horário -->
+        <section class="results-section">
 
-                                <div>
-                                    <span class="schedule-label">
-                                        OPÇÃO DE HORÁRIO
-                                    </span>
+            <div class="section-title">
 
-                                    <h3>
-                                        <c:out value="${horario.dataHoraInicio}"/>
-                                    </h3>
+                <h2>Resultado por horário</h2>
 
-                                    <p>
-                                        Até
-                                        <c:out value="${horario.dataHoraFim}"/>
-                                    </p>
+                <p>
+                    Veja quantos convidados podem participar de cada opção.
+                </p>
+
+            </div>
+
+            <c:choose>
+
+                <c:when test="${empty horarios}">
+
+                    <div class="empty-state">
+
+                        <span class="empty-icon">📅</span>
+
+                        <h3>Nenhum horário cadastrado</h3>
+
+                        <p>
+                            Cadastre opções de horários para começar a receber
+                            as disponibilidades dos convidados.
+                        </p>
+
+                    </div>
+
+                </c:when>
+
+                <c:otherwise>
+
+                    <div class="schedule-list">
+
+                        <c:forEach items="${horarios}" var="horario">
+
+                            <article class="schedule-card">
+
+                                <!-- Informações do horário -->
+                                <div class="schedule-header">
+
+                                    <div>
+
+                                        <span class="schedule-label">
+                                            OPÇÃO DE HORÁRIO
+                                        </span>
+
+                                        <h3>
+                                            <fmt:parseDate
+                                                value="${horario.dataHoraInicio}"
+                                                pattern="yyyy-MM-dd'T'HH:mm"
+                                                var="inicioHorarioFormatado" />
+                                            <fmt:formatDate
+                                                value="${inicioHorarioFormatado}"
+                                                pattern="dd/MM/yyyy 'às' HH:mm" />
+                                        </h3>
+
+                                        <p>
+                                            Até
+                                            <fmt:parseDate
+                                                value="${horario.dataHoraFim}"
+                                                pattern="yyyy-MM-dd'T'HH:mm"
+                                                var="fimHorarioFormatado" />
+                                            <fmt:formatDate
+                                                value="${fimHorarioFormatado}"
+                                                pattern="dd/MM/yyyy 'às' HH:mm" />
+                                        </p>
+
+                                    </div>
+
+                                    <div class="availability-count">
+
+                                        <strong>
+                                            <c:out value="${totalPorHorario[horario.idHorario]}"/>
+                                        </strong>
+
+                                        <span>disponíveis</span>
+
+                                    </div>
+
                                 </div>
 
-                                <div class="availability-count">
-                                    <strong>
-                                        <c:out value="${totalPorHorario[horario.idHorario]}"/>
-                                    </strong>
+                                <!-- Lista de convidados disponíveis -->
+                                <div class="participants">
 
-                                    <span>disponíveis</span>
+                                    <h4>Convidados disponíveis</h4>
+
+                                    <c:choose>
+
+                                        <c:when test="${empty disponibilidadesPorHorario[horario.idHorario]}">
+
+                                            <p class="no-answers">
+                                                Nenhum convidado marcou este horário.
+                                            </p>
+
+                                        </c:when>
+
+                                        <c:otherwise>
+
+                                            <ul class="participant-list">
+
+                                                <c:forEach
+                                                    items="${disponibilidadesPorHorario[horario.idHorario]}"
+                                                    var="disponibilidade">
+
+                                                    <li>
+
+                                                        <span class="participant-icon">
+                                                            ✓
+                                                        </span>
+
+                                                        <div>
+
+                                                            <strong>
+
+                                                                <c:choose>
+
+                                                                    <c:when test="${not empty disponibilidade.convidado.nome}">
+                                                                        <c:out value="${disponibilidade.convidado.nome}"/>
+                                                                    </c:when>
+
+                                                                    <c:otherwise>
+                                                                        <c:out value="${disponibilidade.convidado.email}"/>
+                                                                    </c:otherwise>
+
+                                                                </c:choose>
+
+                                                            </strong>
+
+                                                            <span>
+                                                                <c:out value="${disponibilidade.convidado.email}"/>
+                                                            </span>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </c:forEach>
+
+                                            </ul>
+
+                                        </c:otherwise>
+
+                                    </c:choose>
+
                                 </div>
 
-                            </div>
-
-                            <div class="participants">
-
-                                <h4>Convidados disponíveis</h4>
-
+                                <!-- Confirmação do horário -->
                                 <c:choose>
 
-                                    <c:when test="${empty disponibilidadesPorHorario[horario.idHorario]}">
+                                    <c:when test="${reuniao.status == 'aguardando'}">
 
-                                        <p class="no-answers">
-                                            Nenhum convidado marcou este horário.
-                                        </p>
+                                        <form
+                                            class="confirm-form"
+                                            method="post"
+                                            action="${pageContext.request.contextPath}/reunioes/${reuniao.idReuniao}/disponibilidades/confirmar">
+
+                                            <input
+                                                type="hidden"
+                                                name="idHorario"
+                                                value="${horario.idHorario}">
+
+                                            <button
+                                                type="submit"
+                                                class="confirm-button"
+                                                onclick="return confirm('Deseja confirmar este horário para a reunião?');">
+
+                                                Confirmar este horário
+
+                                            </button>
+
+                                        </form>
 
                                     </c:when>
 
-                                    <c:otherwise>
+                                    <c:when test="${reuniao.status == 'confirmada' and reuniao.horarioEscolhido.idHorario == horario.idHorario}">
 
-                                        <ul class="participant-list">
+                                        <span class="confirmed-label">
+                                            ✓ Horário confirmado
+                                        </span>
 
-                                            <c:forEach
-                                                items="${disponibilidadesPorHorario[horario.idHorario]}"
-                                                var="disponibilidade">
-
-                                                <li>
-                                                    <span class="participant-icon">
-                                                        ✓
-                                                    </span>
-
-                                                    <div>
-                                                        <strong>
-                                                            <c:choose>
-                                                                <c:when test="${not empty disponibilidade.convidado.nome}">
-                                                                    <c:out value="${disponibilidade.convidado.nome}"/>
-                                                                </c:when>
-
-                                                                <c:otherwise>
-                                                                    <c:out value="${disponibilidade.convidado.email}"/>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </strong>
-
-                                                        <span>
-                                                            <c:out value="${disponibilidade.convidado.email}"/>
-                                                        </span>
-                                                    </div>
-
-                                                </li>
-
-                                            </c:forEach>
-
-                                        </ul>
-
-                                    </c:otherwise>
+                                    </c:when>
 
                                 </c:choose>
 
-                            </div>
+                            </article>
 
-                        </article>
+                        </c:forEach>
 
-                    </c:forEach>
+                    </div>
 
-                </div>
+                </c:otherwise>
 
-            </c:otherwise>
+            </c:choose>
 
-        </c:choose>
+        </section>
 
-    </section>
-
-</main>
+    </main>
 
 </body>
 </html>

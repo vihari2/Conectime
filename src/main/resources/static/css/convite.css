@@ -136,6 +136,23 @@ body {
     line-height: 1.5;
 }
 
+.response-message {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+.response-message.success {
+    background: #e8f5ed;
+    color: #205b36;
+}
+
+.response-message.error {
+    background: #fdecec;
+    color: #8b2525;
+}
+
 .availability-list {
     display: flex;
     flex-direction: column;

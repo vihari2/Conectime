@@ -13,6 +13,30 @@ const campoLink = document.getElementById("campoLink");
 const localInput = document.getElementById("local");
 const linkInput = document.getElementById("link");
 
+// Mantém o término no mesmo dia do início por padrão, preservando a
+// possibilidade de o organizador escolher outra data manualmente depois.
+listaHorarios.addEventListener("change", event => {
+
+    const inicio = event.target;
+
+    if (!inicio.matches('[name="dataHoraInicio"]') || !inicio.value) return;
+
+    const linha = inicio.closest(".time-row");
+    const fim = linha.querySelector('[name="dataHoraFim"]');
+    const [dataInicio, horaInicio] = inicio.value.split("T");
+
+    if (!fim.value) {
+        const [horas, minutos] = horaInicio.split(":").map(Number);
+        const minutosFim = Math.min(horas * 60 + minutos + 60, 23 * 60 + 59);
+        const horaFim = `${String(Math.floor(minutosFim / 60)).padStart(2, "0")}:${String(minutosFim % 60).padStart(2, "0")}`;
+        fim.value = `${dataInicio}T${horaFim}`;
+        return;
+    }
+
+    const [, horaFim] = fim.value.split("T");
+    fim.value = `${dataInicio}T${horaFim}`;
+});
+
 // Mostra ou esconde os campos conforme o formato
 function atualizarFormato() {
 
