@@ -100,4 +100,4 @@ src/main/
 ---
 
 Projeto acadêmico desenvolvido com Java, Spring Boot, JSP/JSTL e MySQL.
-Aluna: Vitória de Freitas Machado da Silva.
+
